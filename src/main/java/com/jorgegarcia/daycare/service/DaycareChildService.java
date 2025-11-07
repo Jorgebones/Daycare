@@ -7,18 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.jorgegarcia.daycare.exception.ResourceNotFoundException;
 import com.jorgegarcia.daycare.model.DaycareChild;
-import com.jorgegarcia.daycare.repository.ClassroomRepository;
 import com.jorgegarcia.daycare.repository.DaycareChildRepository;
-import com.jorgegarcia.daycare.repository.TeacherRepository;
 
 @Service
 public class DaycareChildService {
-
-  @Autowired
-  private TeacherRepository teacherRep;
-
-  @Autowired
-  private ClassroomRepository classRep;
 
   @Autowired
   DaycareChildRepository daycarekids;
@@ -29,9 +21,19 @@ public class DaycareChildService {
   }
 
   public DaycareChild getChildById(Long id){
-    
+    x
     return daycarekids.findById(id)
     .orElseThrow(() -> new ResourceNotFoundException("Child %d not found".formatted(id)));
   }
-  
+
+  public List<DaycareChild> getChildrenByClassroomId(Long classroomId){
+    return daycarekids.findByClassroom_Id(classroomId);
+  }
+
+  public DaycareChild addDaycareChildren(DaycareChild child){
+    return daycarekids.save(child);
+  }
+  public void  deleteDaycareChild(long childId){
+    daycarekids.deleteById(childId);
+  }
 }
