@@ -9,6 +9,7 @@ import lombok.*;
 @Data // auto-generates getters, setters, equals, toString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Teacher {
 
     @Id
@@ -17,6 +18,8 @@ public class Teacher {
 
     private String firstName;
     private String lastName;
+
+    private String email;
 
     // One teacher can teach multiple classes
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)

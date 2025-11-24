@@ -10,6 +10,7 @@ import com.jorgegarcia.daycare.model.Classroom;
 @Repository
 public interface ClassroomRepository extends JpaRepository<Classroom,Long>{
 
-  List<Classroom> findByChildrenId(Long id);
+  //_ (underscore indica navegar a campo interno)
+  List<Classroom> findByChildren_Id(Long id);
   
 }

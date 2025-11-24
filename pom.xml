@@ -3,58 +3,86 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- Project metadata -->
+    <!--
+        🌸 MODEL VERSION
+        Always 4.0.0 for Maven. Don't touch.
+    -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Parent handles default versions and dependency management -->
+    <!--
+        🌸 SPRING BOOT PARENT
+        Handles dependency versions, simplifies pom massively.
+        3.5+ = Spring Boot using Java 21 and new Jakarta namespaces.
+    -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.7</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
+    <!--
+        🌸 PROJECT METADATA
+        Your groupId + artifactId uniquely identify your app.
+    -->
     <groupId>com.jorgegarcia</groupId>
     <artifactId>daycare</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <!--
+        🌸 PACKAGING
+        "war" = can deploy to external server.
+        (jar is default, but war is valid too)
+    -->
     <packaging>war</packaging>
+
     <name>daycare</name>
     <description>Daycare Management Spring Boot Application</description>
 
-    <!-- Use modern Java -->
+    <!--
+        🌸 JAVA VERSION
+        Using Java 21 (LTS — Long Term Support)
+    -->
     <properties>
         <java.version>21</java.version>
     </properties>
 
     <dependencies>
 
-        <!-- Spring Boot Web (REST APIs, controllers, Tomcat embedded server) -->
+        <!-- 🌸 SPRING WEB (Controllers, REST APIs) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Data JPA (ORM layer for database access via repositories) -->
+        <!-- 🌸 SPRING JPA (ORM, Repositories, Persistence) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Lombok (auto-generates getters/setters/constructors/loggers) -->
+        <!-- 🌸 LOMBOK (reduces boilerplate) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- Tomcat server (provided for WAR deployment, not included in final build) -->
+        <!-- 🌸 TOMCAT for WAR deployment -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- In-memory H2 database (great for quick testing and prototyping) -->
+        <!-- 🌸 VALIDATION (Jakarta Validation @NotNull, @Email, etc.) -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
+        <!-- 🌸 H2 (In-memory DB for dev + integration testing) -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -62,14 +90,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Spring Boot Test utilities (mock web environment, context loading, etc.) -->
+        <!-- 🌸 SPRING BOOT TEST (MockMvc + slicing + test utils) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito: mocking framework for unit tests -->
+        <!-- 🌸 MOCKITO (mocking dependencies in unit tests) -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -77,7 +105,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito + JUnit 5 integration -->
+        <!-- 🌸 MOCKITO + JUNIT 5 integration -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
@@ -85,27 +113,19 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- AssertJ: fluent assertions (readable, chainable testing syntax) -->
+        <!-- 🌸 ASSERTJ (super readable fluent assertions) -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.27.6</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- JUnit 5 test engine -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Lombok annotation processor -->
+
+            <!-- 🌸 COMPILER + LOMBOK ANNOTATION PROCESSOR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -119,7 +139,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Spring Boot Maven Plugin (for building & running the app easily) -->
+            <!-- 🌸 SPRING BOOT MAVEN PLUGIN (build/run tools) -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -132,6 +152,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

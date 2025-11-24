@@ -7,6 +7,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class DaycareChild {
 
     @Id
@@ -15,7 +16,7 @@ public class DaycareChild {
 
     private String firstName;
     private String lastName;
-    private int age;
+    private Integer age;
 
     // Each child belongs to one classroom
     @ManyToOne
