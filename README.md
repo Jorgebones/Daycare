@@ -86,5 +86,3 @@ Arquitectura limpia y mantenible
 Implementación de autenticación robusta
 
 Buenas prácticas profesionales en proyectos reales
-
-Kisss me pretty prince
