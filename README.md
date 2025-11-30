@@ -6,17 +6,11 @@ Incluye autenticación basada en JWT, control de roles (ADMIN/TEACHER), CRUDs se
 🚀 Tecnologías utilizadas
 
 Java 21
-
 Spring Boot 3.5
-
 Spring Security 6 + JWT
-
 Spring Data JPA
-
 H2 Database
-
 Maven
-
 Lombok
 
 🔐 Seguridad y Autenticación
